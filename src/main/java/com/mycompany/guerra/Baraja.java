@@ -40,64 +40,56 @@ public class Baraja {
         
        while(juego.size()>1) {
         int maximo = 0;
+        ArrayList <Jugador> ganadores = new ArrayList<>();
         for(Jugador j: juego.keySet()){
             ArrayList<Carta> listacartas = juego.get(j);  
             Carta c = j.jugarCarta();
             System.out.println(j.getNombre() + "jugo la carta" + c.getValor());
             listacartas.add(c);
             juego.put(j, listacartas);
-             maximo = Math.max(c.getValor(), maximo);
+            maximo = Math.max(c.getValor(), maximo);
         }
         
         
-        int contador=0;
          for(Jugador j: juego.keySet()){
-            Carta c = juego.get(j).get(-1);  //coge la ultima carta 
-            if(c.getValor()==maximo){
-                contador++;
+            Carta c = juego.get(j).get(juego.size()-1);  //coge la ultima carta 
+            if(c.getValor() == maximo){
+                ganadores.add(j);
                 
             }
         }
-         if(contador==1){
-             System.out.println("no hay empate ");
-             for(Jugador j : juego.keySet()){
-                 if(juego.get(j).get(-1).getValor()==maximo){
-                     System.out.println("el jugador" + j.getNombre() + "es el ganador y se lleva las cartas");
-                     for(Jugador ju : juego.keySet()){
-                         if(!(ju.equals(j))){
-                             juego.get(j).addAll(juego.get(ju));
-                             juego.remove(ju);  //eliminamos  valores
-                             
-                             
-                         }
-                     }
-                 }
-             }
-         }
-         else{
-             ArrayList<Carta> listado = new ArrayList<>();
-             Jugador auxiliar = new Jugador("auxiliar");
-             juego.put(auxiliar, listado);
-             HashMap<Jugador, ArrayList <Carta>> ganadores = new HashMap<>();
-             for(Jugador j :juego.keySet()){
-                if(!(juego.get(j).get(-1).getValor()!=maximo && !auxiliar.equals(j))){
-                    ganadores.put(j, juego.get(j));
-                } else {
-                    for(Jugador jugador : juego.keySet()){
-                        if(jugador.equals(auxiliar)){
-                            juego.get(jugador).addAll(juego.get(j));
-                        }
-                    }
+         if(ganadores.size()==1){
+            Jugador ganador = ganadores.get(0);
+            System.out.println("No hay empate ");
+            System.out.println("El jugador " + ganador.getNombre() + " es el ganador y se lleva las cartas.");
+            
+            for(Jugador j : juego.keySet()){
+                if(!(j.equals(ganador))){
+                    juego.get(j).addAll(juego.get(ganador));
                 }
-                
-             }
-         }
-         
-        
-        
-      
+            }
+            juego.keySet().removeIf(j -> !j.equals(ganador));
+        } else {
+            System.out.println("Hay empate. Empieza la guerra");
+            ArrayList<Carta> cartasPerdedores = new ArrayList<>();
+            Jugador auxiliar = new Jugador("auxiliar");
+            juego.put(auxiliar, cartasPerdedores);
+            for (Jugador j : juego.keySet()) {
+                ArrayList<Carta> manoJugador = juego.get(j);
+                Carta carta = manoJugador.get(manoJugador.size() - 1); // Última carta jugada
+                if (carta.getValor() != maximo) {
+                    cartasPerdedores.addAll(manoJugador);
+                }
+            }
+
+            // Mover las cartas de los perdedores al jugador auxiliar
+            juego.get(auxiliar).addAll(cartasPerdedores);
+
+            // Eliminar a los perdedores
+            juego.keySet().removeIf(jugador -> !ganadores.contains(jugador));
         }
-        
+
+       }
         
     }
     
