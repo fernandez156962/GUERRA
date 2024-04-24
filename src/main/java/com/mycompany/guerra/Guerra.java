@@ -18,6 +18,8 @@ public class Guerra {
         
         JuegoCartas juego = new JuegoCartas();
         
+        System.out.println("");
+        
         
         
         
