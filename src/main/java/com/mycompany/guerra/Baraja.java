@@ -6,6 +6,7 @@ package com.mycompany.guerra;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -35,6 +36,66 @@ public class Baraja {
 
     }
 
+    public void determinarGanador2(HashMap<Jugador,ArrayList<Carta>> juego) {
+        
+       while(juego.size()>1) {
+        int maximo = 0;
+        for(Jugador j: juego.keySet()){
+            ArrayList<Carta> listacartas = juego.get(j);  
+            Carta c = j.jugarCarta();
+            System.out.println(j.getNombre() + "jugo la carta" + c.getValor());
+            listacartas.add(c);
+            juego.put(j, listacartas);
+             maximo = Math.max(c.getValor(), maximo);
+        }
+        
+        
+        int contador=0;
+         for(Jugador j: juego.keySet()){
+            Carta c = juego.get(j).get(-1);  //coge la ultima carta 
+            if(c.getValor()==maximo){
+                contador++;
+                
+            }
+        }
+         if(contador==1){
+             System.out.println("no hay empate ");
+             for(Jugador j : juego.keySet()){
+                 if(juego.get(j).get(-1).getValor()==maximo){
+                     System.out.println("el jugador" + j.getNombre() + "es el ganador y se lleva las cartas");
+                     for(Jugador ju : juego.keySet()){
+                         if(!(ju.equals(j))){
+                             juego.get(j).addAll(juego.get(ju));
+                             juego.remove(ju);  //eliminamos  valores
+                             
+                             
+                         }
+                     }
+                 }
+             }
+         }
+         else{
+             ArrayList<Carta> listado = new ArrayList<>();
+             Jugador auxiliar = new Jugador("auxiliar");
+             juego.put(auxiliar, listado);
+             for(Jugador j :juego.keySet()){
+                 if(juego.get(j).get(-1).getValor()!=maximo ){
+                     
+                 }
+             }
+         }
+         
+        
+        
+      
+        }
+        
+        
+    }
+    
+    
+    
+    
     public Jugador determinarGanador(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
 
         //CADA JUGADOR SACA LA CARTA DE ARRIBA DE LA LISTA
@@ -80,13 +141,7 @@ public class Baraja {
                 Carta cartaNueva = jugador.jugarCarta();
                 cartas.add(cartaNueva);
                 System.out.println(jugador.getNombre() + " volvió a jugar la carta: " + cartaNueva.getValor());
-                if (cartaNueva.getValor() > maxValor) {
-                    maxValor = cartaNueva.getValor();
-                    jugadoresEmpatados.clear();
-                    jugadoresEmpatados.add(jugador);
-                } else if (cartaNueva.getValor() == maxValor) {
-                    jugadoresEmpatados.add(jugador);
-                }
+                
 
             }
         }
@@ -106,6 +161,8 @@ public class Baraja {
         return ganador;
 
     }
+    
+    
     
     
     
