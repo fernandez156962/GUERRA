@@ -78,10 +78,18 @@ public class Baraja {
              ArrayList<Carta> listado = new ArrayList<>();
              Jugador auxiliar = new Jugador("auxiliar");
              juego.put(auxiliar, listado);
+             HashMap<Jugador, ArrayList <Carta>> ganadores = new HashMap<>();
              for(Jugador j :juego.keySet()){
-                 if(juego.get(j).get(-1).getValor()!=maximo ){
-                     
-                 }
+                if(!(juego.get(j).get(-1).getValor()!=maximo && !auxiliar.equals(j))){
+                    ganadores.put(j, juego.get(j));
+                } else {
+                    for(Jugador jugador : juego.keySet()){
+                        if(jugador.equals(auxiliar)){
+                            juego.get(jugador).addAll(juego.get(j));
+                        }
+                    }
+                }
+                
              }
          }
          
