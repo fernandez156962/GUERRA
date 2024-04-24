@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author alumno
- */
+
 public class Baraja {
     
         private List<Carta> baraja;
@@ -99,14 +96,18 @@ public class Baraja {
 
         //para cada jugador
         for (Carta c : cartas) {
-
-            //si no es el ganador
-            ganador.recibirCarta(c);
+            boolean verificado = ganador.verificarCartaMano(c);
+            if(!verificado){
+                ganador.recibirCarta(c);
+            }
+            
 
         }
         return ganador;
 
     }
+    
+    
     
     
 }

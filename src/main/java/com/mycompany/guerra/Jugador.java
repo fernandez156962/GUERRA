@@ -5,7 +5,9 @@
 package com.mycompany.guerra;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -27,6 +29,15 @@ public class Jugador {
 
     public Carta jugarCarta() {
         return mano.remove(0);
+    }
+    
+    public boolean verificarCartaMano(Carta c){
+        if(mano.contains(c)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public List<Carta> getMano() {
