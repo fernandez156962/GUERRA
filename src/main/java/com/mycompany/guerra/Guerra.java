@@ -18,7 +18,7 @@ public class Guerra {
         
         JuegoCartas juego = new JuegoCartas();
         
-        
+        //hola
         
         
         
