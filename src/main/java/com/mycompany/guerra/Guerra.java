@@ -10,13 +10,13 @@ package com.mycompany.guerra;
  */
 public class Guerra {
     
-    public void repartir(JuegoCartas juego, int jugadores) {
+    public void repartir(Baraja juego, int jugadores) {
         
     }
 
     public static void main(String[] args) {
         
-        JuegoCartas juego = new JuegoCartas();
+        Baraja juego = new Baraja();
         
         
         

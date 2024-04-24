@@ -11,9 +11,9 @@ package com.mycompany.guerra;
 public class Carta {
     
     private int valor;
-    private PaloEspanol palo;
+    private Palo palo;
 
-    public Carta(int valor, PaloEspanol palo) {
+    public Carta(int valor, Palo palo) {
         this.valor = valor;
         this.palo = palo;
     }
@@ -26,11 +26,11 @@ public class Carta {
         this.valor = valor;
     }
 
-    public PaloEspanol getPalo() {
+    public Palo getPalo() {
         return palo;
     }
 
-    public void setPalo(PaloEspanol palo) {
+    public void setPalo(Palo palo) {
         this.palo = palo;
     }
 

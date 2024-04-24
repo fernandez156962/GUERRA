@@ -8,7 +8,7 @@ package com.mycompany.guerra;
  *
  * @author alumno
  */
-public enum PaloEspanol {
+public enum Palo {
     
     OROS,
     ESPADAS,

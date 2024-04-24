@@ -4,6 +4,7 @@
  */
 package com.mycompany.guerra;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,32 +14,27 @@ import java.util.List;
 public class Jugador {
     
     private String nombre;
-    private List<Carta> cartas;
+    private List<Carta> mano;  //cada jugador tiene una lista
 
-    public Jugador(String nombre, List<Carta> cartas) {
+    public Jugador(String nombre) {
         this.nombre = nombre;
-        this.cartas = cartas;
+        mano = new ArrayList<>();
+    }
+
+    public void recibirCarta(Carta carta) {
+        mano.add(carta);
+    }
+
+    public Carta jugarCarta() {
+        return mano.remove(0);
+    }
+
+    public List<Carta> getMano() {
+        return mano;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public List<Carta> getCartas() {
-        return cartas;
-    }
-
-    public void setCartas(List<Carta> cartas) {
-        this.cartas = cartas;
-    }
-
-    @Override
-    public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", cartas=" + cartas + '}';
     }
     
     
