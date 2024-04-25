@@ -38,10 +38,14 @@ public class Baraja {
 
     public void determinarGanador2(HashMap<Jugador, ArrayList<Carta>> juego) {
         //MIENTRAS QUEDE MAS DE UN JUGADOR 
+        ArrayList<Carta> cartasPerdedores = new ArrayList<>();
+        Jugador auxiliar = new Jugador("auxiliar");
+        juego.put(auxiliar, cartasPerdedores);
         while (juego.size() > 1) {
             int maximo = 0;  //PONEMOS EL MAXIMO A 0 
             ArrayList<Jugador> ganadores = new ArrayList<>();  //CREAMOS ARRAYLIST DE JUGADORES
             for (Jugador j : juego.keySet()) {  //PARA CADA JUGADOR
+                
                 ArrayList<Carta> listacartas = juego.get(j);     //COGEMOS SU ARRATLIST
                 Carta c = j.jugarCarta();//JUGAMOS SU CARTA
                 System.out.println(j.getNombre() + "jugo la carta" + c.getValor());
@@ -70,9 +74,7 @@ public class Baraja {
                 juego.keySet().removeIf(j -> !j.equals(ganador));
             } else {
                 System.out.println("Hay empate. Empieza la guerra");
-                ArrayList<Carta> cartasPerdedores = new ArrayList<>();
-                Jugador auxiliar = new Jugador("auxiliar");
-                juego.put(auxiliar, cartasPerdedores);
+                
                 for (Jugador j : juego.keySet()) {
                     ArrayList<Carta> manoJugador = juego.get(j);
                     Carta carta = manoJugador.get(manoJugador.size() - 1); // Última carta jugada
