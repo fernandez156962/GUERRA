@@ -43,6 +43,10 @@ public class Jugador {
     public List<Carta> getMano() {
         return mano;
     }
+    
+    public int numeroCartas(){
+        return mano.size();
+    }
 
     public String getNombre() {
         return nombre;
