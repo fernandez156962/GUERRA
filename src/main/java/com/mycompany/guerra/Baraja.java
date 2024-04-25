@@ -207,6 +207,7 @@ public class Baraja {
             if (listaCartas.size() < 2) {
                 // Si un jugador no tiene suficientes cartas para la guerra, lo eliminamos
                 juego.remove(jugador);
+                //esas cartas las tenemos que guardar
             } else {
                 // Juega una carta boca abajo
                 Carta cartaBocaAbajo = listaCartas.remove(listaCartas.size() - 1);
