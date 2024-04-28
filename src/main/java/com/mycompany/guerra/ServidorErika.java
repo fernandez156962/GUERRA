@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author alumno
  */
-public class Servidor2 {
+public class ServidorErika {
 
     /**
      * @param args the command line arguments
@@ -64,7 +64,7 @@ public class Servidor2 {
             ex.printStackTrace(System.err);
             System.exit(1);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Servidor2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServidorErika.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
