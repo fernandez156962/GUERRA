@@ -32,7 +32,7 @@ public class Servidor {
 
             // Aceptar conexiones de los jugadores
             for (int i = 1; i <= NUMERO_DE_JUGADORES; i++) {
-                Socket cliente = servidor.accept();  //esperamos a que acepteee
+                Socket cliente = servidor.accept();  //esperamos a que acepteee se qda bloqueado
                 System.out.println("Jugador " + i + " conectado desde: " + cliente.getInetAddress());
                 ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());
                 flujosSalida.add(salida);
@@ -59,15 +59,15 @@ public class Servidor {
         baraja = new Baraja();
         baraja.repartirCartas(jugadores.get(0), jugadores.get(1), jugadores.get(2), jugadores.get(3));
 
-        Jugador ganadorRonda;
+        /*Jugador ganadorRonda;
         int ronda = 1;
 
         // Jugar las cartas y determinar al ganador de cada ronda
         do {
             ganadorRonda = baraja.determinarGanador(jugadores.get(0), jugadores.get(1), jugadores.get(2), jugadores.get(3));
-            System.out.println("Ronda " + ronda + ": El ganador es " + ganadorRonda.getNombre());
+            //System.out.println("Ronda " + ronda + ": El ganador es " + ganadorRonda.getNombre());
             // Rotar la lista de jugadores para que el ganador juegue primero en la siguiente ronda
-            Collections.rotate(jugadores, -1);
+            //Collections.rotate(jugadores, -1);
             ronda++;
             
             //mientras haya mas jugadores con cartas se seguira jugando
@@ -77,7 +77,7 @@ public class Servidor {
                 .filter(jugador -> !jugador.getMano().isEmpty())
                 .findFirst()
                 .orElse(null);
-        System.out.println("El ganador final del juego es " + ganadorFinal.getNombre());
+        System.out.println("El ganador final del juego es " + ganadorFinal.getNombre());*/
     }
 
     //METODO QUE DEVUELVE CUANTOS JUGADORES TIENEN CARTAS

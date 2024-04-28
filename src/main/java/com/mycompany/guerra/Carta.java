@@ -4,11 +4,13 @@
  */
 package com.mycompany.guerra;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alumno
  */
-public class Carta {
+public class Carta implements Serializable{
     
     private int valor;
     private Palo palo;
