@@ -57,7 +57,12 @@ public class ServidorErika {
                 Jugador j = (Jugador) ois.readObject();
                 System.out.println("jugador recibido" + j);
                 jugadores.add(j);
-                cliente.close(); //para cerrar el socket, puerto que hemos conectado
+                //cliente.close(); //para cerrar el socket, puerto que hemos conectado
+            }
+            Baraja baraja = new Baraja();
+            baraja.repartirCartas(jugadores.get(0), jugadores.get(1), jugadores.get(2), jugadores.get(3));
+            for(Jugador j: jugadores){
+                
             }
         }catch(IOException ex){
             System.err.println("IOException Mensaje "+ ex.getMessage());

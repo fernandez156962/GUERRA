@@ -33,6 +33,7 @@ public class ClienteErika {
             System.out.print("Introduce el nombre del jugador");
             String nombre = scanner.nextLine();
             Jugador j = new Jugador(nombre);
+            j.getMano();
             oos.writeObject(j);
                   
                     

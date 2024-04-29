@@ -12,15 +12,24 @@ import java.util.Map;
 
 public class Baraja {
 
-    private List<Carta> baraja;
+    //private List<Carta> baraja;
 
-    public Baraja() {
+    /*public Baraja() {
         baraja = new ArrayList<>();
         // Crear las cartas de la baraja española
         for (Palo palo : Palo.values()) {
             for (int valor = 1; valor <= 12; valor++) {
                 baraja.add(new Carta(valor, palo));
             }
+        }
+        // Barajar la baraja
+        Collections.shuffle(baraja);
+    }*/
+    public Baraja() {
+        baraja = new ArrayList<>();
+        // Crear las cartas de la baraja española
+        for (int i = 1; i<41; i++) {
+                baraja.add(i);
         }
         // Barajar la baraja
         Collections.shuffle(baraja);
