@@ -11,7 +11,7 @@ package com.mycompany.guerra;
 public enum Palo {
     
     OROS,
-    ESPADAS,
-    COPAS,
-    BASTOS
+    //ESPADAS,
+    //COPAS,
+    //BASTOS
 }

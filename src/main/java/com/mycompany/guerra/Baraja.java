@@ -12,28 +12,21 @@ import java.util.Map;
 
 public class Baraja {
 
-    //private List<Carta> baraja;
-
-    /*public Baraja() {
+    private List<Carta> baraja;
+    
+    //esta cambiada solo hay oros y va del 1 al 40
+    public Baraja() {
         baraja = new ArrayList<>();
         // Crear las cartas de la baraja española
         for (Palo palo : Palo.values()) {
-            for (int valor = 1; valor <= 12; valor++) {
+            for (int valor = 1; valor <= 40; valor++) {
                 baraja.add(new Carta(valor, palo));
             }
         }
         // Barajar la baraja
         Collections.shuffle(baraja);
-    }*/
-    public Baraja() {
-        baraja = new ArrayList<>();
-        // Crear las cartas de la baraja española
-        for (int i = 1; i<41; i++) {
-                baraja.add(i);
-        }
-        // Barajar la baraja
-        Collections.shuffle(baraja);
     }
+    
 
     public void repartirCartas(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
         for (int i = 0; i < baraja.size(); i += 4) {

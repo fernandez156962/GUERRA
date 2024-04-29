@@ -36,6 +36,9 @@ public class ServidorErika {
             int numClientes = 0;
             ArrayList<Jugador> jugadores = new ArrayList<>();
             
+            //ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
+            //ObjectInputStream ois = new ObjectInputStream(cliente.getInputStream());
+            
             while(numClientes< NUM_CLIENTES){
                 Socket cliente = servidor.accept();
                 System.out.println("Cliente " + (numClientes + 1) + " conectado");
@@ -51,8 +54,7 @@ public class ServidorErika {
                     out.println(inputLine);
                 }*/
                 
-                ObjectOutputStream oos = new ObjectOutputStream(cliente.getOutputStream());
-                ObjectInputStream ois = new ObjectInputStream(cliente.getInputStream());
+                
             
                 Jugador j = (Jugador) ois.readObject();
                 System.out.println("jugador recibido" + j);
@@ -61,9 +63,11 @@ public class ServidorErika {
             }
             Baraja baraja = new Baraja();
             baraja.repartirCartas(jugadores.get(0), jugadores.get(1), jugadores.get(2), jugadores.get(3));
+            //cada jugador ya tiene su carta
             for(Jugador j: jugadores){
                 
             }
+            
         }catch(IOException ex){
             System.err.println("IOException Mensaje "+ ex.getMessage());
             ex.printStackTrace(System.err);

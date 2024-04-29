@@ -17,6 +17,7 @@ public class Jugador {
     
     private String nombre;
     private List<Carta> mano;  //cada jugador tiene una lista
+    //private List<Integer> mano;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -26,7 +27,10 @@ public class Jugador {
     public void recibirCarta(Carta carta) {
         mano.add(carta);
     }
-
+    /*public void recibirCarta(int entero){
+            mano.add(entero);
+    }*/
+    
     public Carta jugarCarta() {
         return mano.remove(0);
     }
